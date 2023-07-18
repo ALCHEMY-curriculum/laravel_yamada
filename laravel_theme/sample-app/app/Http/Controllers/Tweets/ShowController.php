@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ShowController extends Controller {
 
-    public function __invoke(Request $request,$id) {
+    public function __invoke($id) {
         return   "ALCHEMYINDEX ${id}";
     }
 }
