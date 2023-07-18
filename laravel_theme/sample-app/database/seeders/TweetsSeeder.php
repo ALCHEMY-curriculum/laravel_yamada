@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\Tweet;
-use Faker\Factory as Faker;
 class TweetsSeeder extends Seeder
 {
     /**
