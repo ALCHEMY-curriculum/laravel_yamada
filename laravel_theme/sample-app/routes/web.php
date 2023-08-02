@@ -16,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/tweets', \App\Http\Controllers\Tweets\IndexController::class);
+Route::get('/tweets', \App\Http\Controllers\Tweets\IndexController::class)
+->name('tweets.index');
 Route::get('/tweets/{id}',\App\Http\Controllers\Tweets\ShowController::class);
+Route::post('/tweets/create', \App\Http\Controllers\Tweets\CreateController::class)
+->name('tweets.create');
