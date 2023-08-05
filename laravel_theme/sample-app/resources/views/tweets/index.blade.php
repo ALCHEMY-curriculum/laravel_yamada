@@ -26,6 +26,7 @@
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button type="submit" class="btn btn-primary">ツイートする</button>
   </div>
+ 
 </form>
 
       <div class="tweets">
@@ -33,6 +34,7 @@
           <div class="tweet">
             <p>{{ $tweet->content }}</p>
             <p>{{ $tweet->created_at }}</p>
+            <a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}">編集</a>
           </div>
         @endforeach
       </div>
