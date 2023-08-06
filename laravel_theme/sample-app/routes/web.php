@@ -27,4 +27,7 @@ Route::get('/tweets/update/{id}', \App\Http\Controllers\Tweets\Update\IndexContr
 Route::put('/tweets/update/{id}', \App\Http\Controllers\Tweets\Update\PutController::class)
     ->name('tweets.update.put')
     ->where('id', '[0-9]+');
-    
+Route::delete('/tweets/{id}', \App\Http\Controllers\Tweets\DeleteController::class)
+    ->name('tweets.delete')
+    ->where('id', '[0-9]+');
+

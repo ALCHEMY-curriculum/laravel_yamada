@@ -36,8 +36,15 @@
             <p>{{ $tweet->created_at }}</p>
             <a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}">編集</a>
           </div>
+          <form action="{{ route('tweets.delete', ['id' => $tweet->id]) }}" method="post">
+  @method('delete')
+  @csrf
+  <button type="submit" class="btn btn-danger">削除</button>
+</form>
         @endforeach
+       
       </div>
+      
     </div>
   </body>
 </html>
