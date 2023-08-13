@@ -21,3 +21,10 @@ Route::get('/tweets', \App\Http\Controllers\Tweets\IndexController::class)
 Route::get('/tweets/{id}',\App\Http\Controllers\Tweets\ShowController::class);
 Route::post('/tweets/create', \App\Http\Controllers\Tweets\CreateController::class)
 ->name('tweets.create');
+Route::get('/tweets/update/{id}', \App\Http\Controllers\Tweets\Update\IndexController::class)
+    ->name('tweets.update.index')
+    ->where('id', '[0-9]+');
+Route::put('/tweets/update/{id}', \App\Http\Controllers\Tweets\Update\PutController::class)
+    ->name('tweets.update.put')
+    ->where('id', '[0-9]+');
+    
