@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $tweets = Tweet::all();
+        $tweets = Tweet::orderBy('created_at', 'desc')->get();
         return view('tweets.index')
 								->with('tweets', $tweets);
     }
