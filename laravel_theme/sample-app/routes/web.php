@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 Route::get('/tweets', \App\Http\Controllers\Tweets\IndexController::class)
 ->name('tweets.index');
-Route::get('/tweets/{id}',\App\Http\Controllers\Tweets\ShowController::class);
+Route::get('/tweets/{id}', \App\Http\Controllers\Tweets\ShowController::class)
+    ->name('tweets.show');
 Route::post('/tweets/create', \App\Http\Controllers\Tweets\CreateController::class)
 ->name('tweets.create');
 Route::get('/tweets/update/{id}', \App\Http\Controllers\Tweets\Update\IndexController::class)
