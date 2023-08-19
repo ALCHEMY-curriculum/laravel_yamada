@@ -34,13 +34,16 @@
         <div class="tweet">
   <p>{{ $tweet->user->name }} {{ $tweet->created_at }}</p>
   <p>{{ $tweet->content }}</p>
-  <p><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}">編集</a></p>
+  <a href="{{ route('tweets.show', ['id' => $tweet->id]) }}">詳細ページを見る</a>
+  @if( Auth::id() === $tweet->user_id)
+  <p><button type="submit" class="btn btn-primary"><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}"class="text-decoration-none text-light">編集</a></button></p>
 
   <form action="{{ route('tweets.delete', ['id' => $tweet->id]) }}" method="post">
     @method('delete')
     @csrf
     <button type="submit" class="btn btn-danger">削除</button>
   </form>
+  @endif
 </div>
        
         @endforeach
