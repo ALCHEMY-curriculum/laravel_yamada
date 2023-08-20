@@ -32,6 +32,11 @@ Route::delete('/tweets/{id}', \App\Http\Controllers\Tweets\DeleteController::cla
     ->name('tweets.delete')
     ->where('id', '[0-9]+');
 
+Route::get('/account', \App\Http\Controllers\Account\IndexController::class)
+    ->name('account.index');
+Route::post('/account/icon', \App\Http\Controllers\Account\IconController::class)
+    ->name('account.icon');
+
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
