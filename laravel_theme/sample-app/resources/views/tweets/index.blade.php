@@ -31,17 +31,21 @@
 
       <div class="tweets">
         @foreach($tweets as $tweet)
-          <div class="tweet">
-            <p>{{ $tweet->content }}</p>
-            <p>{{ $tweet->created_at }}</p>
-            <button class="btn btn-primary"><a href="{{ route('tweets.show', ['id' => $tweet->id]) }}"class="text-light text-decoration-none">詳細ページを見る</a></button>
-            <button  class="btn btn-primary"><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}"class="text-light text-decoration-none">編集</a></button>
-          </div>
-          <form action="{{ route('tweets.delete', ['id' => $tweet->id]) }}" method="post">
-  @method('delete')
-  @csrf
-  <button type="submit" class="btn btn-danger mt-1">削除</button>
-</form>
+        <div class="tweet">
+  <p>{{ $tweet->user->name }} {{ $tweet->created_at }}</p>
+  <p>{{ $tweet->content }}</p>
+  <a href="{{ route('tweets.show', ['id' => $tweet->id]) }}">詳細ページを見る</a>
+  @if( Auth::id() === $tweet->user_id)
+  <p><button type="submit" class="btn btn-primary"><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}"class="text-decoration-none text-light">編集</a></button></p>
+
+  <form action="{{ route('tweets.delete', ['id' => $tweet->id]) }}" method="post">
+    @method('delete')
+    @csrf
+    <button type="submit" class="btn btn-danger">削除</button>
+  </form>
+  @endif
+</div>
+       
         @endforeach
        
       </div>

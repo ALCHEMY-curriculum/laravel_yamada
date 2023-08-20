@@ -8,11 +8,6 @@ use App\Models\Tweet;
 
 class CreateController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\CreateRequest  $request
-     */
     public function __invoke(CreateRequest $request)
     {
         // Tweet Modelをインスタンス化
@@ -20,6 +15,9 @@ class CreateController extends Controller
         
         // contentにformのtweetを挿入
         $tweet->content = $request->tweet();
+
+        // user_idを保存
+        $tweet->user_id = $request->userId(); // <- 追加
 
         // DBに保存
         $tweet->save();
