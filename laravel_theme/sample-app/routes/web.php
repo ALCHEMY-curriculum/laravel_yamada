@@ -32,6 +32,7 @@ Route::delete('/tweets/{id}', \App\Http\Controllers\Tweets\DeleteController::cla
     ->name('tweets.delete')
     ->where('id', '[0-9]+');
 
+
 });
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,3 +45,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

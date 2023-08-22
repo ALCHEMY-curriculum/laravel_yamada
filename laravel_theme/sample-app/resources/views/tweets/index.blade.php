@@ -31,6 +31,7 @@
 
       <div class="tweets">
         @foreach($tweets as $tweet)
+
         <div class="tweet">
   <p>{{ $tweet->user->name }} {{ $tweet->created_at }}</p>
   <p>{{ $tweet->content }}</p>
@@ -46,6 +47,7 @@
   @endif
 </div>
        
+
         @endforeach
        
       </div>
