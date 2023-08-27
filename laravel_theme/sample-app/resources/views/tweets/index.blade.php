@@ -36,6 +36,7 @@
 <x-tweets :tweets="$tweets">
       <div class="tweets">
         @foreach($tweets as $tweet)
+
         <div class="tweet">
   <p>{{ $tweet->user->name }} {{ $tweet->created_at }}</p>
   <p>{{ $tweet->content }}</p>
@@ -52,6 +53,7 @@
 </div>
 
        
+
         @endforeach
        
       </div>
