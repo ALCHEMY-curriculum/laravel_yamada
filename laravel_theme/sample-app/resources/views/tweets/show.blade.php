@@ -18,14 +18,19 @@
           <p>{{ $tweet->content }}</p>
 
         </div>
-       
+
+        @if( Auth::id() === $tweet->user_id)
+
           <button type="submit" class="btn btn-primary mb-1"><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}" class="text-light text-decoration-none">編集</a></button>
         <form action="{{ route('tweets.delete', ['id' => $tweet->id]) }}" method="post">
   @method('delete')
   @csrf
   <button type="submit" class="btn btn-danger">削除</button>
 </form>
-     
+
+@endif
+      </div>
+
     </div>
   </body>
 </html>

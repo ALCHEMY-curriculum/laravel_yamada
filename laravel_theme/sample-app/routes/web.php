@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::middleware('auth')->group(function() {
 Route::get('/tweets', \App\Http\Controllers\Tweets\IndexController::class)
 ->name('tweets.index');
 Route::get('/tweets/{id}', \App\Http\Controllers\Tweets\ShowController::class)
@@ -31,4 +31,18 @@ Route::put('/tweets/update/{id}', \App\Http\Controllers\Tweets\Update\PutControl
 Route::delete('/tweets/{id}', \App\Http\Controllers\Tweets\DeleteController::class)
     ->name('tweets.delete')
     ->where('id', '[0-9]+');
+
+
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
