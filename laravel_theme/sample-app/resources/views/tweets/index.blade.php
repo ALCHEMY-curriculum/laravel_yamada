@@ -1,4 +1,6 @@
+
 <x-layout> 
+
     <div class="container ">
   
       <h1>つぶやき一覧</h1>
@@ -21,7 +23,7 @@
   </div>
  
 </form>
-
+<x-tweets :tweets="$tweets">
       <div class="tweets">
         @foreach($tweets as $tweet)
 
@@ -44,7 +46,6 @@
         @endforeach
        
       </div>
-      
+      </x-tweets>
     </div>
     </x-layout>
- 
