@@ -23,7 +23,7 @@
   </div>
  
 </form>
-<x-tweets :tweets="$tweets">
+
       <div class="tweets">
         @foreach($tweets as $tweet)
 
@@ -46,6 +46,6 @@
         @endforeach
        
       </div>
-      </x-tweets>
+   
     </div>
     </x-layout>
