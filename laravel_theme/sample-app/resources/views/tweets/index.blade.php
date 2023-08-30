@@ -1,16 +1,4 @@
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ついったー</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-  </head>
-  <body>
-    <x-layout> 
+<x-layout> 
     <div class="container ">
   
       <h1>つぶやき一覧</h1>
@@ -33,13 +21,12 @@
   </div>
  
 </form>
-<x-tweets :tweets="$tweets">
+
       <div class="tweets">
         @foreach($tweets as $tweet)
 
         <div class="tweet">
-  <p>{{ $tweet->user->name }} {{ $tweet->created_at }}</p>
-  <p>{{ $tweet->content }}</p>
+        <x-tweets :tweet="$tweet" />
   <a href="{{ route('tweets.show', ['id' => $tweet->id]) }}">詳細ページを見る</a>
   @if( Auth::id() === $tweet->user_id)
   <p><button type="submit" class="btn btn-primary"><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}"class="text-decoration-none text-light">編集</a></button></p>
@@ -57,9 +44,7 @@
         @endforeach
        
       </div>
-      </x-tweets>
+      
     </div>
     </x-layout>
-  </body>
-</html>
-
+ 
