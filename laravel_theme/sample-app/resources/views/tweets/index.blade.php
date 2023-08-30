@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ついったー</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
+<x-layout> 
+    <div class="container ">
+  
       <h1>つぶやき一覧</h1>
       <form action="{{ route('tweets.create') }}" method="post">
   @csrf
@@ -33,8 +26,7 @@
         @foreach($tweets as $tweet)
 
         <div class="tweet">
-  <p>{{ $tweet->user->name }} {{ $tweet->created_at }}</p>
-  <p>{{ $tweet->content }}</p>
+        <x-tweets :tweet="$tweet" />
   <a href="{{ route('tweets.show', ['id' => $tweet->id]) }}">詳細ページを見る</a>
   @if( Auth::id() === $tweet->user_id)
   <p><button type="submit" class="btn btn-primary"><a href="{{ route('tweets.update.index', ['id' => $tweet->id]) }}"class="text-decoration-none text-light">編集</a></button></p>
@@ -46,6 +38,7 @@
   </form>
   @endif
 </div>
+
        
 
         @endforeach
@@ -53,6 +46,5 @@
       </div>
       
     </div>
-  </body>
-</html>
-
+    </x-layout>
+ 
