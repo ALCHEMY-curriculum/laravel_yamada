@@ -1,4 +1,6 @@
 
+
+
     <x-layout>
     <div class="container">
       <h1>つぶやき編集 #{{ $tweet->id }}</h1>
@@ -32,4 +34,4 @@
 @endif
     </div>
     </x-layout>
- 
+

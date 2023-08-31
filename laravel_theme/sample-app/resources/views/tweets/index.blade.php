@@ -1,4 +1,6 @@
+
 <x-layout> 
+
     <div class="container ">
   
       <h1>つぶやき一覧</h1>
@@ -44,7 +46,6 @@
         @endforeach
        
       </div>
-      
+   
     </div>
     </x-layout>
- 
